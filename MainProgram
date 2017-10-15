@@ -1,0 +1,66 @@
+//Bryant Henning
+//CMP167 Tu/Th class
+
+//Submit to Yanilda.peraltaramos@lehman.cuny.edu
+//Print every city that starts with the letter 'A', 'O', 'C'
+//At least 20 Cities
+
+import java.util.Scanner;
+
+public class City{
+   public static void main(String[] args){
+
+      char a='A', c='C', o='O';
+      Scanner input = new Scanner(System.in);
+      int f=0;
+      String temp;
+      String[] cities=new String[] {"Montgomery","Juneau","Phoenix","Sacramento",
+      "Denver","Hartford","Dover","Tallahassee","Atlanta","Honolulu","Boise",
+      "Springfield","Indianapolis","Topeka","Frankfort","Augusta","Annapolis",
+      "Boston","Lansing","Jackson","Helena","Lincoln","Concord","Trenton",
+      "Albany","Raleigh","Bismarck","Columbus","Salem","Harrisburg","Providence",
+      "Columbia","Pierre","Nashville","Austin","Montpelier","Richmond","Olympia",
+      "Charleston","Madison","Cheyenne"};
+
+      for(int n=0; n<cities.length -1;n++){
+         for(int l=0;l<cities.length -1;l++){
+            for(int b=0;b<99;b++){
+               if(cities[l].charAt(b)>cities[l+1].charAt(b)){
+                  temp=cities[l];
+                  cities[l]=cities[l+1];
+                  cities[l+1]=temp;
+                  break;
+                  }
+               else if(cities[l].charAt(b)<cities[l+1].charAt(b)){
+                  break;
+               }
+               else if(cities[l]==cities[l+1]){
+               l++;
+               }
+            }
+         }
+      }
+      do{
+         System.out.print("The program will print the cities starting with the ");
+         System.out.print("letters "+a+", "+c+", and "+o+".\nWould you like to ");
+         System.out.println("use other letters?\n   1. Yes\n   2. No");
+         f = input.nextInt();
+         while(f==1){
+            System.out.println("What three letters would you like to use");
+            a = input.next().charAt(0);
+            a = Character.toUpperCase(a);
+            c = input.next().charAt(0);
+            c = Character.toUpperCase(c);
+            o = input.next().charAt(0);
+            o = Character.toUpperCase(o);
+            f = 0;
+         }
+      }while(f==1);
+
+      for(int d=0;d<cities.length;d++){
+         if(cities[d].charAt(0)==a||cities[d].charAt(0)==c||cities[d].charAt(0)==o){
+            System.out.println(cities[d]);
+         }
+      }
+   }
+}
